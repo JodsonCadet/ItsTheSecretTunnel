@@ -1,18 +1,18 @@
-/** Button that attempts to use the token in context when clicked */
 import { useAuth } from "./AuthContext";
-import { useState } from "react";
+// import { useState } from "react";
 export default function Tablet() {
   // TODO: call authenticate when form is submitted
-  const { authenticate } = useAuth();
+    const { authenticate } = useAuth();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await authenticate();
-    if (result) {
-      console.log("Authentication successful");
+    if (result && result.success) {
+      console.log("authenticate completed successfully")
     } else {
-      console.error("Authentication failed", result.message);
+      console.error("authentication failed:", result.message)
     }
-  };
+  }
   return (
     <section>
       <p>
